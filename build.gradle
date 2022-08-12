@@ -1,6 +1,6 @@
 apply plugin: 'base'
 apply plugin: 'org.sonarqube'
-archivesBaseName = 'cdk-ecs-ec2'
+archivesBaseName = 'ecs-ec2-cdk'
 
 buildscript {
     repositories {
@@ -16,8 +16,8 @@ buildscript {
 
 sonarqube {
     properties {
-        property "sonar.projectName", "cdk-ecs-ec2"
-        property "sonar.projectKey", "ContainerOnAWS_cdk-ecs-ec2"
+        property "sonar.projectName", "ecs-ec2-cdk"
+        property "sonar.projectKey", "ContainerOnAWS_ecs-ec2-cdk"
         property "sonar.organization", "containeronaws"
         // property "sonar.host.url", "http://127.0.0.1:9000"
         property "sonar.host.url", "https://sonarcloud.io"
@@ -27,7 +27,7 @@ sonarqube {
         property "sonar.issue.ignore.multicriteria", "e1"
         property "sonar.issue.ignore.multicriteria.e1.ruleKey", "typescript:S1848"
         property "sonar.issue.ignore.multicriteria.e1.resourceKey", "**/*.ts"
-        property "sonar.links.ci", "https://github.com/ContainerOnAWS/cdk-ecs-ec2"
+        property "sonar.links.ci", "https://github.com/ContainerOnAWS/ecs-ec2-cdk"
         property "sonar.log.level", "DEBUG"
     }
 }
