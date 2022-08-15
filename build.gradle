@@ -24,7 +24,7 @@ sonarqube {
         property "sonar.sourceEncoding", "UTF-8"
         property "sonar.sources", "."
         property "sonar.java.binaries", "build"
-        property "sonar.exclusions", "**/node_modules/**, **/cdk.out/**"
+        property "sonar.exclusions", "**/node_modules/**, **/cdk.out/**, app/**"
         property "sonar.issue.ignore.multicriteria", "e1"
         property "sonar.issue.ignore.multicriteria.e1.ruleKey", "typescript:S1848"
         property "sonar.issue.ignore.multicriteria.e1.resourceKey", "**/*.ts"
