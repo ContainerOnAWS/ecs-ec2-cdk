@@ -1,5 +1,4 @@
 import { Construct } from 'constructs';
-import * as cdk from 'aws-cdk-lib';
 import { Stack, StackProps, CfnOutput, Duration, Lazy, RemovalPolicy } from 'aws-cdk-lib';
 import * as path from 'path';
 import * as ecs from 'aws-cdk-lib/aws-ecs';
