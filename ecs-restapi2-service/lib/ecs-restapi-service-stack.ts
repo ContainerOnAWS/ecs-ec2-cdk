@@ -1,6 +1,6 @@
 import * as cdk from 'aws-cdk-lib';
 import * as path from 'path';
-import { Stack, StackProps, CfnOutput, Duration } from 'aws-cdk-lib';
+import { Stack, StackProps, CfnOutput, Duration, Lazy, RemovalPolicy } from 'aws-cdk-lib';
 import * as ecs from 'aws-cdk-lib/aws-ecs';
 import * as ec2 from 'aws-cdk-lib/aws-ec2';
 import * as logs from 'aws-cdk-lib/aws-logs';
@@ -41,8 +41,8 @@ export class EcsRestAPIServiceStack extends Stack {
         const taskDefinition = new ecs.TaskDefinition(this, 'task-definition', {
             compatibility: ecs.Compatibility.EC2,
             family: `${serviceName}-task`,
-            executionRole: iam.Role.fromRoleArn(this, 'task-execution-role', cdk.Lazy.string({ produce: () => executionRoleArn })),
-            taskRole: iam.Role.fromRoleArn(this, 'task-role', cdk.Lazy.string({ produce: () => taskRoleArn }))
+            executionRole: iam.Role.fromRoleArn(this, 'task-execution-role', Lazy.string({ produce: () => executionRoleArn })),
+            taskRole: iam.Role.fromRoleArn(this, 'task-role', Lazy.string({ produce: () => taskRoleArn }))
         });
         const container = taskDefinition.addContainer('container-restapi', {
             containerName,
@@ -73,7 +73,7 @@ export class EcsRestAPIServiceStack extends Stack {
             scaleOutCooldown: Duration.seconds(60),
         });
         const logGroup = new logs.LogGroup(this, 'logGroup', {
-            removalPolicy: cdk.RemovalPolicy.DESTROY,
+            removalPolicy: RemovalPolicy.DESTROY,
             logGroupName: serviceName,
             retention: logs.RetentionDays.TWO_WEEKS,
         });
@@ -93,7 +93,7 @@ export class EcsRestAPIServiceStack extends Stack {
             loadBalancerName: `alb-${serviceName}`,
             internetFacing: true,
             deletionProtection: false,
-            idleTimeout: cdk.Duration.seconds(30),
+            idleTimeout: Duration.seconds(30),
         });
 
         const listener = alb.addListener('https-listener', {
