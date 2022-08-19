@@ -114,7 +114,7 @@ export class EcsRestAPIServiceStack extends Stack {
                 healthyThresholdCount: 2,
                 unhealthyThresholdCount: 5,
                 interval: Duration.seconds(12),
-                path: '/ping',
+                path: '/',
                 timeout: Duration.seconds(10),
             },
             deregistrationDelay: Duration.seconds(15)

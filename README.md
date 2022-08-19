@@ -83,7 +83,7 @@ Create the ECS Task Execution role and default Task Role.
 * ECSDefaultTaskRole including a policy for ECS Exec
 
 ```bash
-cd ../iam-role
+cd ../ecs-iam-role
 cdk deploy 
 ```
 
